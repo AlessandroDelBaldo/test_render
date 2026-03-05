@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Profilo di {{ user['username']}}</h1>
+  <h3>Post pubblicati: {{ lenght }}</h3>
+  <hr>
+  <h1>I suoi post</h1>
+
+  {% for post in posts %}
+    <ul>
+          <p><a href="{{ url_for('main.user', id=user['id']) }}">{{ post['title'] }}</a>  ({{ post['created'].strftime('%Y-%m-%d') }})</p>
+    </ul>
+  {% endfor %}
+  <hr>
+  <a href="{{ url_for('main.index')}}">Torna alla home</a>
+{% endblock %}
